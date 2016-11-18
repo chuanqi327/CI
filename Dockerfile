@@ -1,7 +1,7 @@
-FROM index.alauda.cn/library/java:openjdk-8-alpine
+FROM registry.alauda.cn/library/java:7
 MAINTAINER "Longwei Li <longwei.li@moji.com>"
-RUN apk add -U tzdata
-RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+ENV TZ=Asia/Shanghai
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 WORKDIR /apache-tomcat-7.0.33-SF
 ADD ./apache-tomcat-7.0.33-SF/ /apache-tomcat-7.0.33-SF
 ADD ./run.sh /apache-tomcat-7.0.33-SF/run.sh
