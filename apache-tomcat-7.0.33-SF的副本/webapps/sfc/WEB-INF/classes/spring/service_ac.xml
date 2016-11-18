@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd" -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="serviceStrategy" class="com.moji.shortforecast.web.shortforecast.jsonpattern.impl.ServiceStrategyImpl">
+		<property name="serviceService" ref="serviceService" />
+	</bean>
+	
+	<bean id="cityService" class="com.moji.shortforecast.service.impl.CityServiceImpl"></bean>
+
+	<!-- 定义服务信息 -->
+	<bean id="diditaxi" class="com.moji.shortforecast.bean.ServiceBean">
+		<property name="id" value="1" />
+		<property name="adCode" value="didi" />
+		<property name="shortName" value="约个车" />
+		<property name="name" value="滴滴出行" />
+		<property name="url" value="http://common.diditaxi.com.cn/general/webEntry?channel=1238" />
+		<property name="btnIcon" value="http://cdn.moji002.com/images/simgs/2016/01/12/14525779250.96077500.1904_1452577925869_xiaomo.png" />
+	</bean>
+	<bean id="chelaile" class="com.moji.shortforecast.bean.ServiceBean">
+		<property name="id" value="2" />
+		<property name="adCode" value="chelaile" />
+		<property name="shortName" value="查公交" />
+		<property name="name" value="车来了" />
+		<property name="url" value="http://web.chelaile.net.cn/wwd/index?src=webapp_moji" />
+		<property name="btnIcon" value="http://cdn.moji002.com/images/simgs/2016/01/12/14525787430.59276000.1434_1452578743528_xiaomo_.png" />
+	</bean>
+	
+	<!-- 定义服务的选择信息：城市&天气 -->
+	<bean id="allcity_weathers_didi" class="com.moji.shortforecast.bean.ServiceSelect">
+	    <property name="allCity" value="true" />
+	    <property name="allWeather" value="true" />
+	    <!-- property name="weathers" >
+	        <list>
+	            <value>7</value>小雨
+				<value>8</value>中雨
+				<value>9</value>大雨
+				<value>10</value>暴雨
+				<value>10</value>暴雨(night)
+				<value>3</value>阵雨
+				<value>33</value>阵雨(night)
+				<value>4</value>雷阵雨
+				<value>5</value>雷阵雨伴有冰雹
+				<value>19</value>冻雨
+				<value>14</value>小雪
+				<value>15</value>中雪
+				<value>16</value>大雪
+				<value>17</value>暴雪
+				<value>13</value>阵雪
+				<value>34</value>阵雪(night)
+				<value>6</value>雨夹雪
+	        </list>
+	    </property> -->
+	</bean>
+	<bean id="citys_weathers_chelaile" class="com.moji.shortforecast.bean.ServiceSelect">
+	    <property name="citys" >
+			<list>
+				<value>340</value><!-- 上海市 340 -->
+				<value>506</value><!-- 东莞市 506 -->
+				<value>1276</value><!-- 中山市 1276 -->
+				<value>391</value><!-- 乌鲁木齐市 391 -->
+				<value>102</value><!-- 佛山市 102 -->
+				<value>225</value><!-- 兰州市 225 -->
+				<value>33</value><!-- 北京市 33 -->
+				<value>288</value><!-- 南京市 288 -->
+				<value>289</value><!-- 南宁市 289 -->
+				<value>285</value><!-- 南昌市 285 -->
+				<value>292</value><!-- 南通市 292 -->
+				<value>412</value><!-- 厦门市 412 -->
+				<value>376</value><!-- 唐山市 376 -->
+				<value>936</value><!-- 商丘市 936 -->
+				<value>64</value><!-- 大连市 64 -->
+				<value>379</value><!-- 天津市 379 -->
+				<value>1434</value><!-- 宁波市 1434 -->
+				<value>14</value><!-- 安阳市 14 -->
+				<value>50</value><!-- 常州市 50 -->
+				<value>209</value><!-- 开封市 209 -->
+				<value>480</value><!-- 张家口市 480 -->
+				<value>436</value><!-- 徐州市 436 -->
+				<value>171</value><!-- 惠州市 171 -->
+				<value>53</value><!-- 成都市 53 -->
+				<value>228</value><!-- 拉萨市 228 -->
+				<value>429</value><!-- 新乡市 429 -->
+				<value>1318</value><!-- 无锡市 1318 -->
+				<value>5721</value><!-- 昌吉市 5721 -->
+				<value>143</value><!-- 杭州市 143 -->
+				<value>402</value><!-- 武汉市 402 -->
+				<value>351</value><!-- 沈阳市 351 -->
+				<value>327</value><!-- 泉州市 327 -->
+				<value>191</value><!-- 济南市 191 -->
+				<value>352</value><!-- 深圳市 352 -->
+				<value>398</value><!-- 温州市 398 -->
+				<value>878</value><!-- 焦作市 878 -->
+				<value>1445</value><!-- 瑞安市 1445 -->
+				<value>355</value><!-- 石家庄市 355 -->
+				<value>109</value><!-- 福州市 109 -->
+				<value>346</value><!-- 绍兴市 346 -->
+				<value>503</value><!-- 苏州市 503 -->
+				<value>1774</value><!-- 莆田市 1774 -->
+				<value>910</value><!-- 许昌市 910 -->
+				<value>113</value><!-- 赣州市 113 -->
+				<value>489</value><!-- 郑州市 489 -->
+				<value>57</value><!-- 重庆市 57 -->
+				<value>318</value><!-- 青岛市 318 -->
+				<value>495</value><!-- 驻马店市 495 -->
+				<value>126</value><!-- 广州市 126 -->
+				<value>294</value><!-- 南阳市 294 -->
+			</list>
+	    </property>
+	    <property name="weathers" >
+	        <list>
+	            <value>7</value><!--小雨-->
+				<value>8</value><!--中雨-->
+				<value>9</value><!--大雨-->
+				<value>10</value><!--暴雨-->
+				<value>10</value><!--暴雨(night)-->
+				<value>3</value><!--阵雨-->
+				<value>33</value><!--阵雨(night)-->
+				<value>4</value><!--雷阵雨-->
+				<value>5</value><!--雷阵雨伴有冰雹-->
+				<value>19</value><!--冻雨-->
+				<value>14</value><!--小雪-->
+				<value>15</value><!--中雪-->
+				<value>16</value><!--大雪-->
+				<value>17</value><!--暴雪-->
+				<value>13</value><!--阵雪-->
+				<value>34</value><!--阵雪(night)-->
+				<value>6</value><!--雨夹雪-->
+	        </list>
+	    </property>
+	</bean>
+	
+	<bean id="serviceService" class="com.moji.shortforecast.service.impl.ServiceServiceImpl" >
+	    <property name="cityService" ref="cityService" />
+		<property name="services">
+			<map>
+				<entry key-ref="allcity_weathers_didi">
+				    <ref bean="diditaxi" />
+				</entry>
+				<entry key-ref="citys_weathers_chelaile">
+				    <ref bean="chelaile" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+</beans>

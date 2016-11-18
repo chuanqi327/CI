@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd" -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+			http://www.springframework.org/schema/context 
+			http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+			http://www.springframework.org/schema/tx 
+			http://www.springframework.org/schema/tx/spring-tx-3.0.xsd 
+			http://www.springframework.org/schema/aop 
+			http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">			
+	<bean id="redisUtil" class="com.moji.util.redis.RedisUtil"></bean>
+
+	<bean id="shortForecastUtil" class="com.moji.util.shortforecast.support.zmq.ZmqInterpolationShortForecastUtil">
+		<property name="pool">
+			<bean id="zmqPool" class="com.moji.util.shortforecast.support.zmq.ZmqPool" init-method="init">
+				<property name="address" value="tcp://sfmq2s:17954"/>
+				<property name="maxTotal" value="100"/>
+				<property name="maxIdle" value="50"/>
+				<property name="minIdle" value="25"/>
+				<property name="maxWaitMillis" value="200"/>
+				<property name="recvTimeout" value="-1"/>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="pushTokenProducer" class="com.moji.util.kafka.producer.KafkaProducer">
+		<property name="brokerList" value="kf1:9092"/>
+		<property name="retries" value="1"/>
+	</bean>
+	
+	<!-- Weather --> 
+	<bean id="weatherService" class="com.moji.shortforecast.service.impl.WeatherServiceImpl">
+	</bean>
+	<bean id="verificationCodeService" class="com.moji.shortforecast.service.impl.VerificationCodeServiceImpl">
+	</bean>
+	<!-- Notice -->
+	<bean id="noticeService" class="com.moji.shortforecast.service.impl.NoticeServiceImpl"/>
+	<!-- push token -->
+	<bean id="pushTokenService" class="com.moji.shortforecast.service.impl.PushTokenServiceImpl">
+		<property name="pushTokenProducer" ref="pushTokenProducer"/>
+		<property name="topic" value="shortPushToken"/>
+	</bean>
+</beans>
