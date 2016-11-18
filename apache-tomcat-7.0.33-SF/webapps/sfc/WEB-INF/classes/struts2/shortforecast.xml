@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="shortforecast_json" extends="app-default" namespace="/json">
+		<action name="shortforecast" class="com.moji.shortforecast.web.shortforecast.ShortForecastJsonAction" method="getShortForecast">
+			<result name="shortforecast" type="json">
+				<param name="root">resultBean</param>
+		        <param name="contentType">text/html</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="excludeNullProperties">true</param>
+				<param name="includeProperties">
+					^rc\.c$,^rc\.p$,
+					radarData.*,
+					radarData.iconConvention.*
+				</param>
+			</result>
+		</action>
+		<action name="feedback" class="com.moji.shortforecast.web.push.PushJsonAction" method="feedback">
+			<result name="feedback" type="json">
+				<param name="root">resBean</param>
+		        <param name="contentType">text/html</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="excludeNullProperties">true</param>
+				<param name="includeProperties">
+					^rc\.c$,^rc\.p$,
+				</param>
+			</result>
+		</action>
+		<action name="token" class="com.moji.shortforecast.web.push.PushTokenJsonAction" method="tokenCollect">
+			<result name="token" type="json">
+				<param name="root">pushTokenJsonResultBean</param>
+		        <param name="contentType">text/html</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="excludeNullProperties">true</param>
+				<param name="includeProperties">
+					^rc\.c$,^rc\.p$,
+				</param>
+			</result>
+		</action>
+		
+		
+		<action name="getVerificationCode" class="com.moji.shortforecast.web.shortforecast.ShortForecastJsonAction" method="getVerificationCode">
+			<result name="getvc" type="stream">
+				<param name="contentType">image/jpeg</param>
+				<param name="inputName">verificationCodeStream</param>
+				<param name="bufferSize">2048</param>
+			</result>
+		</action>
+		<action name="isVerificationCodeOK" class="com.moji.shortforecast.web.shortforecast.ShortForecastJsonAction" method="isVerificationCodeOK">
+			<result name="isVerificationCodeOK" type="json">
+				<param name="root">verifyResultBean</param>
+		        <param name="contentType">text/html</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="excludeNullProperties">true</param>
+				<!-- <param name="includeProperties">
+					^rc\.c$,^rc\.p$,
+				</param> -->
+			</result>
+		</action>
+		
+		<action name="getServices" class="com.moji.shortforecast.web.shortforecast.ShortForecastJsonAction" method="getServices">
+			<result name="getServices" type="json">
+				<param name="root">getServicesResultBean</param>
+		        <param name="contentType">text/html</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="excludeNullProperties">true</param>
+				<!-- <param name="includeProperties">
+					^rc\.c$,^rc\.p$,
+				</param> -->
+			</result>
+		</action>
+		
+		
+	</package>
+</struts>

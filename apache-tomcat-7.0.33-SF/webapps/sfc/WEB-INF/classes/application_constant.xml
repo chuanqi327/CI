@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd" -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+			http://www.springframework.org/schema/context 
+			http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+			http://www.springframework.org/schema/tx 
+			http://www.springframework.org/schema/tx/spring-tx-3.0.xsd 
+			http://www.springframework.org/schema/aop 
+			http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+			
+	<!-- 系统配置 -->
+	<bean id="sysConfig" class="com.moji.core.framework.common.constant.SysConfig" init-method="init">
+	    <property name="isProduct" value="true"></property>
+	</bean>	
+	<bean class="com.moji.shortforecast.common.constant.CommonConstants" lazy-init="false" >
+	    <property name="VERIFICATION_CODE_SHELF_LIFE" value="300000" /><!-- 5分钟：5 * 60 * 1000 -->
+ 	    <property name="SERVICE_SNAPSHOT_SHELF_LIFE" value="10800000" /><!-- 3小时：3 * 60 * 60 * 1000 -->
+	    <!-- <property name="SERVICE_SNAPSHOT_SHELF_LIFE" value="300000" />--><!-- ：5分钟：5 * 60 * 1000 -->
+	</bean>
+	<bean class="com.moji.shortforecast.common.constant.RedisConstants">
+		<property name="REDIS_MASTER" value="masterRedis" />
+		<property name="REDIS_SLAVE" value="slaveRedis" />
+		
+		<property name="VERIFICATION_CODE_KEY_PREFIX" value="verificationcode" />
+		<property name="VERIFICATION_CODE_VALUE" value="code" />
+		<property name="VERIFICATION_CODE_TIMESTAMP" value="timestamp" />
+		
+		<property name="SERVICE_VISIT_KEY_PREFIX" value="servicevisit" />
+		<property name="SERVICE_VISIT_TIMESTAMP" value="timestamp" />
+		<property name="SERVICE_VISIT_CITY" value="city" />
+		<property name="SERVICE_VISIT_WEATHER" value="weather" />
+	</bean>
+</beans>

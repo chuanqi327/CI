@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.moji</groupId>
+    <artifactId>moji-server</artifactId>
+    <version>1.0.0</version>
+  </parent>
+  <artifactId>weather_shortforecast</artifactId>
+  <name>weather_shortforecast</name>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+	<dependencies>
+		<dependency>
+			<groupId>com.moji</groupId>
+			<artifactId>lib-core</artifactId>
+			<version>1.0.0</version>
+			<type>pom</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.moji</groupId>
+			<artifactId>lib-common</artifactId>
+			<version>1.0.0</version>
+			<type>pom</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.moji</groupId>
+			<artifactId>lib-local</artifactId>
+			<version>1.0.0</version>
+			<type>pom</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.moji</groupId>
+			<artifactId>util-common</artifactId>
+			<version>2.0.0</version>
+			<type>jar</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.moji</groupId>
+			<artifactId>util-redis</artifactId>
+			<version>2.0.0</version>
+			<type>jar</type>
+		</dependency>
+			
+		<dependency>
+			<groupId>com.moji</groupId>
+			<artifactId>util-kafka</artifactId>
+			<version>1.0.0</version>
+			<type>jar</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.moji</groupId>
+			<artifactId>util-shortforecast</artifactId>
+			<version>1.0.0</version>
+			<type>jar</type>
+		</dependency>
+
+		<dependency>
+			<groupId>com.moji</groupId>
+			<artifactId>core-framework</artifactId>
+			<version>1.0.0</version>
+			<type>jar</type>
+		</dependency>
+	    
+		<dependency>  
+			<groupId>javax.servlet</groupId>  
+			<artifactId>servlet-api</artifactId>  
+			<version>2.5</version>  
+			<scope>provided</scope>  
+		</dependency> 
+		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+	    </dependency>
+	    
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>3.2.4.RELEASE</version>
+			<scope>test</scope>
+	    </dependency>
+	    
+	    <dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>18.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<version>2.2.3</version>
+			<classifier>jdk15</classifier> 
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-json-plugin</artifactId>
+			<version>2.2.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.moji</groupId>
+			<artifactId>snsrefactor-bean</artifactId>
+			<version>1.0.0</version>
+			<type>jar</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.moji</groupId>
+			<artifactId>snsrefactor-constant</artifactId>
+			<version>1.0.0</version>
+			<type>jar</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.moji</groupId>
+			<artifactId>third-bean</artifactId>
+			<version>1.0.0</version>
+			<type>jar</type>
+		</dependency>
+	</dependencies>
+	
+	<build>
+	    <plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.8</version>
+				<configuration>
+					<skipTests>true</skipTests>
+				</configuration>
+			</plugin>
+			
+			<plugin>  
+	            <groupId>org.apache.maven.plugins</groupId>  
+	            <artifactId>maven-compiler-plugin</artifactId>  
+	            <configuration>  
+	                <source>1.7</source>  
+	                <target>1.7</target>  
+	                <encoding>UTF-8</encoding>  
+	            </configuration>  
+	        </plugin>			
+		</plugins>
+		<finalName>shortforecast</finalName>
+	</build>
+</project>
